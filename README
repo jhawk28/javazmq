@@ -1,0 +1,5 @@
+Java developers have an aversion to jni based libraries and there are
+a few places like EJB containers that do not allow jni access. This hopes
+to create a subset of the ZeroMQ functionality using pure Java.
+
+http://www.zeromq.org/
