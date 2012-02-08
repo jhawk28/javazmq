@@ -9,5 +9,5 @@ package zmq.transport;
  */
 public enum TransportType
 {
-  TCP, SSL, INPROC
+  TCP, INPROC
 }

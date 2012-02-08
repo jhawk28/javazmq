@@ -1,6 +1,8 @@
 package zmq;
 
+import org.zeromq.ZMQ;
 import zmq.patterns.SocketType;
+import zmq.util.ZMQException;
 
 /**
  * TODO Description
@@ -11,22 +13,25 @@ import zmq.patterns.SocketType;
  */
 public class Context
 {
-  Context(int threads)
-  {
-    
-  }
-
-  public Socket socket(SocketType type)
-  {
-    return new Socket(this, type);
-  }
-
-  public Poller poller() {
-    return new Poller(this);
-  }
+  ZMQ.Context context;
 
   public void term()
   {
-    
+    context.term();
+  }
+
+  public ZMQ.Socket socket(int type)
+  {
+    return context.socket(type);
+  }
+
+  public ZMQ.Poller poller()
+  {
+    return context.poller();
+  }
+
+  public ZMQ.Poller poller(int size)
+  {
+    return context.poller(size);
   }
 }

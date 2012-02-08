@@ -1,5 +1,7 @@
 package zmq;
 
+import org.zeromq.ZMQ;
+
 /**
  * TODO Description
  *
@@ -9,67 +11,60 @@ package zmq;
  */
 public class Poller
 {
-  public static byte POLLIN = 1;
-  public static byte POLLOUT = 2;
-  public static byte POLLERR = 4;
+  ZMQ.Poller poller;
 
-  Poller(Context context)
+  public int register(ZMQ.Socket socket)
   {
+    return poller.register(socket);
+  }
 
+  public int register(ZMQ.Socket socket, int events)
+  {
+    return poller.register(socket, events);
+  }
+
+  public void unregister(ZMQ.Socket socket)
+  {
+    poller.unregister(socket);
+  }
+
+  public ZMQ.Socket getSocket(int index)
+  {
+    return poller.getSocket(index);
+  }
+
+  public int getSize()
+  {
+    return poller.getSize();
   }
 
   public int getNext()
   {
-    return 0;
-  }
-
-  public int size()
-  {
-    return 0;
+    return poller.getNext();
   }
 
   public long poll()
   {
-    return poll(-1);
+    return poller.poll();
   }
 
-  public long poll(long timeout)
+  public long poll(long tout)
   {
-    return 0;
+    return poller.poll(tout);
   }
 
-  public int register(Socket socket)
+  public boolean pollin(int index)
   {
-    return register(socket, POLLERR | POLLIN | POLLOUT);
+    return poller.pollin(index);
   }
 
-  public int register(Socket socket, int mask)
+  public boolean pollout(int index)
   {
-    return 0;
+    return poller.pollout(index);
   }
 
-  public void unregister(Socket socket)
+  public boolean pollerr(int index)
   {
-    
-  }
-
-  public Socket getSocket(int index)
-  {
-    return null;
-  }
-
-  public boolean isPollin(int index)
-  {
-    return true;
-  }
-
-  public boolean isPollout(int index)
-  {
-    return true;
-  }
-
-  public boolean isPollerr(int index)
-  {
-    return true;
+    return poller.pollerr(index);
   }
 }
