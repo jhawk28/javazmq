@@ -21,16 +21,6 @@ public class Encoder
 
   public static void connect(WritableByteChannel channel, byte socketType, byte[] identity) throws IOException
   {
-    ByteBuffer buffer = ByteBuffer.allocate(5);
-    buffer.put((byte) 0x4);
-    buffer.put((byte) 0x0);
-    buffer.put(VERSION);
-    buffer.put(socketType);
-    buffer.put(MORE);
-    buffer.flip();
-
-    channel.write(buffer);
-
     if (identity != null)
     {
       identity(channel, identity);

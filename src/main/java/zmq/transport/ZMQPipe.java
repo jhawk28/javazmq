@@ -1,5 +1,7 @@
 package zmq.transport;
 
+import java.nio.channels.Pipe;
+
 /**
  * TODO Description
  *
@@ -9,4 +11,5 @@ package zmq.transport;
  */
 public class ZMQPipe
 {
+  private Pipe pipe;
 }

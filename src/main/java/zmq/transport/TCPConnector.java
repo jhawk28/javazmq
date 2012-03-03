@@ -1,5 +1,7 @@
 package zmq.transport;
 
+import java.nio.channels.SocketChannel;
+
 /**
  * TODO Description
  *
@@ -9,4 +11,5 @@ package zmq.transport;
  */
 public class TCPConnector
 {
+  private SocketChannel channel;
 }

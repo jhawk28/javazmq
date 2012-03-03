@@ -1,5 +1,7 @@
 package zmq.transport;
 
+import java.nio.channels.ServerSocketChannel;
+
 /**
  * TODO Description
  *
@@ -9,4 +11,5 @@ package zmq.transport;
  */
 public class TCPListener
 {
+  private ServerSocketChannel channel;
 }

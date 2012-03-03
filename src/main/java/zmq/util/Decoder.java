@@ -13,25 +13,27 @@ import java.nio.channels.ReadableByteChannel;
  */
 public class Decoder
 {
-  public static byte connect(ReadableByteChannel channel) throws IOException
+  public static byte[] connect(ReadableByteChannel channel) throws IOException
   {
-    // challenge
-    ByteBuffer buffer = ByteBuffer.allocate(5);
-    channel.read(buffer);
-    buffer.flip();
-    if (buffer.get() != 0x4 || buffer.get() != 0x0)
-    {
-      throw new ZMQException("invalid challenge");
-    }
-    if (buffer.get() != 0x11)
-    {
-      throw new ZMQException("invalid version");
-    }
-    byte socketType = buffer.get();
-    byte[] identity;
+    byte[] identity = null;
 
     // anonymous or identity
 
-    return socketType;
+    return identity;
+  }
+
+  public static byte[] identity(ReadableByteChannel channel)
+  {
+    return null;
+  }
+
+  public static void anonymous(ReadableByteChannel channel)
+  {
+
+  }
+
+  public static byte[] receive(ReadableByteChannel channel)
+  {
+    return null;
   }
 }
