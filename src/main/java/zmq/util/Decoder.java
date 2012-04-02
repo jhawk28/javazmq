@@ -13,27 +13,20 @@ import java.nio.channels.ReadableByteChannel;
  */
 public class Decoder
 {
-  public static byte[] connect(ReadableByteChannel channel) throws IOException
+  private ByteBuffer temp = ByteBuffer.allocate(258); //start...
+
+  public void readOne(ReadableByteChannel channel) throws IOException
   {
-    byte[] identity = null;
+    temp.limit(1);
+    channel.read(temp);
 
-    // anonymous or identity
-
-    return identity;
+    readEight(channel);
   }
 
-  public static byte[] identity(ReadableByteChannel channel)
+  public void readEight(ReadableByteChannel channel) throws IOException
   {
-    return null;
-  }
+    temp.limit(8);
+    channel.read(temp);
 
-  public static void anonymous(ReadableByteChannel channel)
-  {
-
-  }
-
-  public static byte[] receive(ReadableByteChannel channel)
-  {
-    return null;
   }
 }
