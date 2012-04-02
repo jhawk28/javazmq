@@ -16,10 +16,8 @@ public class Encoder
 {
   static byte MORE = 0x1;
   static byte FINAL = 0x0;
-  static byte VERSION = 0x11;
 
-
-  public static void connect(WritableByteChannel channel, byte socketType, byte[] identity) throws IOException
+  public static void connect(WritableByteChannel channel, byte[] identity) throws IOException
   {
     if (identity != null)
     {
@@ -53,9 +51,9 @@ public class Encoder
     ByteBuffer buffer;
     if (size > 254)
     {
-      buffer = ByteBuffer.allocate(8);
+      buffer = ByteBuffer.allocate(9);
       buffer.put((byte) 0xFF);
-      buffer.putLong(size); // TODO Verify that this is the correct byte order
+      buffer.putLong(size);
     }
     else
     {
